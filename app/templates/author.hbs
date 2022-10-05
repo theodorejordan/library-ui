@@ -1,11 +1,11 @@
 <div class="panel-heading">
     <div class="search">
-        <input type="text" placeholder="Search by Author Name">
+        <input type="text" placeholder="Search by Author Name" value={{this.search}} {{on "input" this.updateSearch}}>
     </div>
 
-    <a href>
+    <LinkTo @route="author.create" class="btn-new">
         <div class="sr-only">Add New Author</div>
-    </a>
+    </LinkTo>
 </div>
 
 <div class="panel-content">
@@ -14,8 +14,10 @@
     <ul class="collection">
         {{#each @model as |author|}}
             <li>
-                <AuthorListItem @first={{author.first}} @last={{author.last}}/>
+                <AuthorListItem @first={{author.first}} @last={{author.last}} @authorId={{author.id}}/>
             </li>
         {{/each}}
     </ul>
 </div>
+
+{{outlet}}
