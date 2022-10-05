@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-export default class AuthorRoute extends Route {
+export default class BookRoute extends Route {
   @service store;
 
   queryParams = {
@@ -12,13 +12,13 @@ export default class AuthorRoute extends Route {
 
   model({ search }) {
     if (search) {
-      return this.store.query('author', {
+      return this.store.query('book', {
         filter: {
           query: search,
         },
       });
     }
 
-    return this.store.findAll('author');
+    return this.store.findAll('book');
   }
 }
