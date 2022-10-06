@@ -1,3 +1,11 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
 
-export default class BookDetailController extends Controller {}
+export default class BookDetailController extends Controller {
+  @action
+  destroyBook(book) {
+    book.destroyRecord().then(() => {
+      this.transitionToRoute('book.index');
+    });
+  }
+}

@@ -5,6 +5,7 @@ export default class AuthorEditController extends Controller {
   @action
   saveAuthor(formValues) {
     this.model.setProperties(formValues);
+
     this.model.save().then(() => {
       this.transitionToRoute('author');
     });

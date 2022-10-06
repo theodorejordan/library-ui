@@ -11,20 +11,31 @@
                 <h3> {{@model.title}}</h3>
 
                 <div class="actions">
-                    {{!-- <LinkTo @route="book.edit" @model={{@model}} class="btn-pop">edit</LinkTo> --}}
-                    {{!-- <button class="btn-recessed" onclick={{action 'deleteAuthor' @model}} type="button">Delete</button> --}}
+                    <LinkTo @route="book.edit" @model={{@model}} class="btn-pop">Edit</LinkTo>
+                    <button class="btn-recessed" onclick={{action 'destroyBook' @model}} type="button">Delete</button>
                 </div>
             </div>
 
             <div class="details">
                 <p>
                     <strong>Author:</strong>
+                    <LinkTo @route="author.detail" @model={{@model.author}}>{{@model.author.last}}, {{@model.author.first}}</LinkTo>
+                </p>
+                <p>
+                    <strong>Publish Date:</strong>
 
-                    {{@model.author.last}}, {{@model.author.first}}
+                    {{@model.publishDate}}
+                </p>
+                <p>
+                    <strong>ISBN:</strong>
+
+                    {{@model.isbn}}
                 </p>
             </div>
         </div>
 
-        <div class="slide-out-content"></div>
+        <div class="slide-out-content">
+
+        </div>
     </div>
 </div>
