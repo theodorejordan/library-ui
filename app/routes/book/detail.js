@@ -7,4 +7,3 @@ export default class BookDetailRoute extends Route {
     return this.store.findRecord('book', id);
   }
 }
- 

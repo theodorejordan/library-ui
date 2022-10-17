@@ -4,25 +4,24 @@ import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 
 export default class AuthorDetailNewBookController extends Controller {
-    @service store;
+  @service store;
 
-    @tracked publishDate = null;
+  @tracked publishDate = null;
 
-    @action
-    updatePublishDate(value) {
-        this.publishDate = value.target.value;
-    }
+  @action
+  updatePublishDate(value) {
+    this.publishDate = value.target.value;
+  }
 
-    @action
-    saveBook(ev) {
-        ev.preventDefault();
+  @action
+  saveBook(ev) {
+    ev.preventDefault();
 
-        let book = this.store.createRecord('book', this.model.book);
+    this.model.book.publishDate = this.publishDate;
+    let book = this.store.createRecord('book', this.model.book);
 
-        book.save().then(
-            () => {
-                this.transitionToRoute('author.detail', this.model.author.id);
-            }
-        )
-    }
+    book.save().then(() => {
+      this.transitionToRoute('author.detail', this.model.author.id);
+    });
+  }
 }
